@@ -12,10 +12,10 @@ spring:
     gateway:
       routes:
         - id: PRODUCT-SERVICE
-          uri: http://localhost:9940/
+          uri: lb://PRODUCT-SERVICE #dynamic routing (used if multiple ports running)
           predicates:
             - Path=/product/**
         - id: CUSTOMER-SERVICE
-          uri: http://localhost:9941/
+          uri: http://localhost:9941/ #static routing
           predicates:
             - Path=/customer/**
